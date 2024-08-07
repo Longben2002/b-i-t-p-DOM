@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Tập JavaScript DOM</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <button class="sidebar-btn active" onclick="showExercise(1)">📘 Bài 1</button>
+            <button class="sidebar-btn" onclick="showExercise(2)">📜 Bài 2</button>
+            <button class="sidebar-btn" onclick="showExercise(3)">💱 Bài 3</button>
+            <button class="sidebar-btn" onclick="showExercise(4)">📏 Bài 4</button>
+            <button class="sidebar-btn" onclick="showExercise(5)">🔢 Bài 5</button>
+        </div>
+        <div class="content">
+            <!-- Exercise 1: Calculate Employee Salary -->
+            <div id="exercise1" class="exercise active">
+                <h2>💰 Tính tiền lương nhân viên</h2>
+                <div class="suggestions">
+                    <p>💡 <strong>Gợi ý:</strong></p>
+                    <p>Công thức: Lương = Lương 1 ngày * số ngày làm</p>
+                    <p>Kiến thức áp dụng:</p>
+                    <ul>
+                        <li>Tìm tới thẻ và lấy giá trị</li>
+                        <li>Tạo hàm cơ bản</li>
+                        <li>Gắn sự kiện click cho button</li>
+                        <li>Thay đổi nội dung cho thẻ</li>
+                        <li>Xử lý load trang với button của form</li>
+                    </ul>
+                </div>
+                <div class="input-group">
+                    <input type="number" id="dailyWage" placeholder="Nhập lương 1 ngày">
+                    <input type="number" id="workingDays" placeholder="Số ngày làm">
+                </div>
+                <button class="calculate-btn" onclick="calculateSalary()">Tính lương</button>
+                <div class="result" id="salaryResult"></div>
+            </div>
+
+            <!-- Exercise 2: Compute Average of Five Numbers -->
+            <div id="exercise2" class="exercise">
+                <h2>📊 Tính giá trị trung bình</h2>
+                <div class="suggestions">
+                    <p>💡 <strong>Gợi ý:</strong></p>
+                    <p>Kiến thức áp dụng:</p>
+                    <ul>
+                        <li>Tìm tới thẻ và lấy giá trị</li>
+                        <li>Tạo hàm cơ bản</li>
+                        <li>Gắn sự kiện click cho button</li>
+                        <li>Thay đổi nội dung cho thẻ</li>
+                        <li>Xử lý load trang với button của form</li>
+                        <li>Xử lý ép kiểu dữ liệu</li>
+                    </ul>
+                </div>
+                <div class="input-group">
+                    <input type="number" id="number1" placeholder="Nhập số thứ nhất">
+                    <input type="number" id="number2" placeholder="Nhập số thứ hai">
+                    <input type="number" id="number3" placeholder="Nhập số thứ ba">
+                    <input type="number" id="number4" placeholder="Nhập số thứ tư">
+                    <input type="number" id="number5" placeholder="Nhập số thứ năm">
+                </div>
+                <button class="calculate-btn" onclick="calculateAverage()">Tính trung bình</button>
+                <div class="result" id="averageResult"></div>
+            </div>
+
+            <!-- Exercise 3: Currency Converter (USD to VND) -->
+            <div id="exercise3" class="exercise">
+                <h2>💱 Quy đổi tiền</h2>
+                <div class="suggestions">
+                    <p>💡 <strong>Gợi ý:</strong></p>
+                    <p>Kiến thức áp dụng:</p>
+                    <ul>
+                        <li>Áp dụng các kiến thức như bài 1 và 2</li>
+                        <li>Giá USD mặc định 1 USD = 23,500 VND</li>
+                        <li>Có thể dùng thêm NumberFormat để số tiền hiển thị đẹp hơn</li>
+                    </ul>
+                </div>
+                <div class="input-group">
+                    <input type="number" id="usdAmount" placeholder="Nhập số tiền USD">
+                </div>
+                <button class="calculate-btn" onclick="convertCurrency()">Quy đổi tiền</button>
+                <div class="result" id="currencyResult"></div>
+            </div>
+
+            <!-- Exercise 4: Calculate Area and Perimeter of a Rectangle -->
+            <div id="exercise4" class="exercise">
+                <h2>📏 Tính diện tích, chu vi hình chữ nhật</h2>
+                <div class="suggestions">
+                    <p>💡 <strong>Gợi ý:</strong></p>
+                    <p>Kiến thức áp dụng:</p>
+                    <ul>
+                        <li>Áp dụng các kiến thức như các bài trước</li>
+                        <li>Diện tích: dài x rộng</li>
+                        <li>Chu vi: (dài + rộng) x 2</li>
+                    </ul>
+                </div>
+                <div class="input-group">
+                    <input type="number" id="rectangleWidth" placeholder="Nhập chiều rộng">
+                    <input type="number" id="rectangleHeight" placeholder="Nhập chiều dài">
+                </div>
+                <button class="calculate-btn" onclick="calculateRectangle()">Tính</button>
+                <div class="result" id="rectangleResult"></div>
+            </div>
+
+            <!-- Exercise 5: Sum of Digits of a Number -->
+            <div id="exercise5" class="exercise">
+                <h2>🔢 Tính tổng 2 ký số</h2>
+                <div class="suggestions">
+                    <p>💡 <strong>Gợi ý:</strong></p>
+                    <p>Kiến thức áp dụng:</p>
+                    <ul>
+                        <li>Áp dụng cách tính như demo tổng 3 ký số trên lớp</li>
+                    </ul>
+                </div>
+                <div class="input-group">
+                    <input type="number" id="digitNumber" placeholder="Nhập số có 2 chữ số">
+                </div>
+                <button class="calculate-btn" onclick="sumOfDigits()">Tính tổng</button>
+                <div class="result" id="digitResult"></div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>

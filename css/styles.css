@@ -1,0 +1,132 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f5f7fa;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.sidebar-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
+}
+
+.sidebar-btn.active {
+    background-color: #e0f0ff;
+    color: #0056b3;
+}
+
+.sidebar-btn:hover {
+    background-color: #f0f8ff;
+    color: #0056b3;
+}
+
+.icon {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f7fa;
+    overflow-y: auto;
+}
+
+.notice {
+    background-color: #fff3cd;
+    color: #856404;
+    border-left: 5px solid #ffeeba;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.exercise {
+    display: none;
+}
+
+.exercise.active {
+    display: block;
+}
+
+h2 {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+
+.suggestions {
+    background-color: #e7f3e7;
+    border-left: 4px solid #4caf50;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="number"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.calculate-btn {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.calculate-btn:hover {
+    background-color: #0056b3;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333;
+    background-color: #e7f3ff;
+    padding: 10px;
+    border-radius: 5px;
+}
