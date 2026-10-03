@@ -1,0 +1,328 @@
+:root {
+    --ink: #f4f5f7;
+    --muted: #b9bfc8;
+    --accent: #e3c27a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    color: var(--ink);
+    font-family: 'Oswald', sans-serif;
+}
+
+#viewport {
+    position: fixed;
+    inset: 0;
+    background: #000;
+}
+
+#stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+    background: #000;
+    transform-origin: 0 0;
+}
+
+#frame,
+#grain,
+#flash,
+#endshade {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1080px;
+    height: 1920px;
+    pointer-events: none;
+}
+
+#flash {
+    background: #fff;
+    opacity: 0;
+}
+
+#endshade {
+    background: linear-gradient(180deg, transparent 38%, rgba(4, 6, 10, 0.75) 52%, rgba(4, 6, 10, 0.96) 70%);
+    opacity: 0;
+}
+
+/* Số liệu nhấn theo nhịp */
+.stat {
+    position: absolute;
+    left: 76px;
+    top: 1180px;
+    transform-origin: 0 50%;
+    opacity: 0;
+    visibility: hidden;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.7), 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.stat::before {
+    content: '';
+    position: absolute;
+    left: -200px;
+    top: -160px;
+    width: 1100px;
+    height: 560px;
+    background: radial-gradient(ellipse 50% 50% at 40% 50%, rgba(0, 0, 0, 0.55), transparent 70%);
+    z-index: -1;
+}
+
+.stat .num {
+    font-weight: 700;
+    font-size: 168px;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+}
+
+.stat .num small {
+    margin-left: 14px;
+    font-weight: 500;
+    font-size: 54px;
+    letter-spacing: 0.04em;
+}
+
+.stat .lbl {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 8px 14px 8px 18px;
+    font-weight: 500;
+    font-size: 28px;
+    letter-spacing: 0.22em;
+    color: #0c0d10;
+    background: var(--ink);
+}
+
+/* Tên xe ở cảnh hero */
+#hero {
+    position: absolute;
+    left: 50%;
+    top: 1240px;
+    text-align: center;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    text-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+}
+
+.brand {
+    font-weight: 300;
+    font-size: 36px;
+    letter-spacing: 0.9em;
+    padding-left: 0.9em;
+    color: var(--muted);
+}
+
+#hero .model {
+    font-weight: 700;
+    font-size: 176px;
+    line-height: 1;
+}
+
+/* Màn kết */
+#end {
+    position: absolute;
+    left: 50%;
+    top: 1010px;
+    width: 960px;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#end > * {
+    opacity: 0;
+}
+
+#end .model {
+    font-weight: 700;
+    font-size: 150px;
+    line-height: 1.02;
+}
+
+#end .sub {
+    font-weight: 300;
+    font-size: 30px;
+    letter-spacing: 0.55em;
+    padding-left: 0.55em;
+    color: var(--muted);
+}
+
+#end .rule {
+    width: 420px;
+    height: 2px;
+    margin: 34px auto 30px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+#end .price .from {
+    display: block;
+    font-weight: 300;
+    font-size: 30px;
+    letter-spacing: 0.5em;
+    padding-left: 0.5em;
+    color: var(--accent);
+}
+
+#end .price .gold {
+    display: inline-block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 116px;
+    line-height: 1.1;
+    background-image: linear-gradient(100deg, #6e5019 0%, #b98a2f 20%, #f2d58a 40%, #fff4d2 50%, #f2d58a 60%, #b98a2f 80%, #6e5019 100%);
+    background-size: 260% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+#end .tagline {
+    margin-top: 18px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 38px;
+    color: var(--ink);
+}
+
+#end .cta {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 18px 40px 18px calc(40px + 0.3em);
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: 0.3em;
+    color: #0c0d10;
+    background: var(--ink);
+    border-radius: 999px;
+}
+
+#disclaimer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 64px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 21px;
+    letter-spacing: 0.04em;
+    color: #8f96a0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* ---------- Trình phát ---------- */
+#ui {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+#splash {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.88);
+    pointer-events: auto;
+    transition: opacity 0.5s;
+}
+
+#splash.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.s-kicker {
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.45em;
+    color: var(--muted);
+}
+
+.s-title {
+    font-weight: 700;
+    font-size: clamp(36px, 10vw, 72px);
+    line-height: 1;
+}
+
+.s-sub {
+    min-height: 1em;
+    font-size: 14px;
+    color: var(--accent);
+}
+
+#play-btn {
+    margin-top: 12px;
+    padding: 12px 32px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 17px;
+    letter-spacing: 0.3em;
+    color: #0c0d10;
+    background: var(--ink);
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+#play-btn:disabled {
+    color: var(--muted);
+    background: #1a1c20;
+    cursor: wait;
+}
+
+#controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    pointer-events: auto;
+}
+
+#controls button {
+    width: 40px;
+    height: 34px;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#scrub {
+    flex: 1;
+    min-width: 0;
+    accent-color: var(--ink);
+}
+
+#clock {
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+body.render #ui {
+    display: none;
+}

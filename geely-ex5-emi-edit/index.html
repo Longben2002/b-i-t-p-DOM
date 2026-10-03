@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geely EX5 EM-i — Edit 9:16</title>
+    <link rel="stylesheet" href="./fonts/fonts.css">
+    <link rel="stylesheet" href="./edit.css">
+</head>
+<body>
+    <div id="viewport">
+        <div id="stage">
+            <canvas id="frame" width="1080" height="1920"></canvas>
+            <div id="endshade"></div>
+
+            <div class="stat" id="st1">
+                <div class="num">228,3<small>KM</small></div>
+                <div class="lbl">CHẠY THUẦN ĐIỆN · KỶ LỤC VN</div>
+            </div>
+            <div class="stat" id="st2">
+                <div class="num">1.823,7<small>KM</small></div>
+                <div class="lbl">MỘT LẦN ĐỔ ĐẦY · KỶ LỤC VN</div>
+            </div>
+            <div class="stat" id="st3">
+                <div class="num">3,02<small>L/100KM</small></div>
+                <div class="lbl">TIÊU HAO HỖN HỢP · KỶ LỤC VN</div>
+            </div>
+
+            <div id="hero">
+                <div class="brand">GEELY</div>
+                <div class="model" id="hero-model">EX5 EM-i</div>
+            </div>
+
+            <div id="end">
+                <div class="brand" data-at="0">GEELY</div>
+                <div class="model" data-at="0.3">EX5 EM-i</div>
+                <div class="sub" data-at="1">SUV PLUG-IN HYBRID</div>
+                <div class="rule" data-at="1.5"></div>
+                <div class="price" data-at="2"><span class="from">CHỈ TỪ</span><span class="gold">789 TRIỆU</span></div>
+                <div class="tagline" data-at="3">“Ông trùm thật sự không cần nổ máy.”</div>
+                <div class="cta" data-at="4">ĐẶT LỊCH LÁI THỬ NGAY</div>
+            </div>
+            <div id="disclaimer">Kỷ lục do VietKings xác lập (03/2026). Giá niêm yết tham khảo.</div>
+
+            <div id="flash"></div>
+            <canvas id="grain" width="1080" height="1920"></canvas>
+        </div>
+    </div>
+
+    <div id="ui">
+        <div id="splash">
+            <div class="s-kicker">VIDEO DỌC 9:16 · 15 GIÂY</div>
+            <div class="s-title">GEELY EX5 EM-i</div>
+            <div class="s-sub" id="missing"></div>
+            <button id="play-btn" disabled>Đang tải…</button>
+        </div>
+        <div id="controls">
+            <button id="toggle" aria-label="Phát / Tạm dừng">❚❚</button>
+            <input id="scrub" type="range" min="0" max="15.43" step="0.01" value="0" aria-label="Tua">
+            <span id="clock">0:00 / 0:15</span>
+        </div>
+    </div>
+
+    <script src="./shots.js"></script>
+    <script src="./beat.js"></script>
+    <script src="./edit.js"></script>
+</body>
+</html>
