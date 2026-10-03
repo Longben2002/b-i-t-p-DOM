@@ -76,7 +76,7 @@ async function masterAudio(wav, m4a, target = -15) {
     const gain = target - Number(json.input_i);
     await run('ffmpeg', [
         '-y', '-i', wav,
-        '-af', `volume=${gain.toFixed(2)}dB,alimiter=limit=0.89:attack=4:release=60:level=disabled`,
+        '-af', `volume=${gain.toFixed(2)}dB,alimiter=limit=0.8:attack=4:release=60:level=disabled`,
         '-c:a', 'aac', '-b:a', '192k', m4a,
     ]);
     console.log(`Âm thanh: ${Number(json.input_i).toFixed(1)} LUFS -> ${target} LUFS (${gain >= 0 ? '+' : ''}${gain.toFixed(1)} dB)`);
