@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geely EX5 EM-i — Ông Trùm</title>
+    <link rel="stylesheet" href="./fonts/fonts.css">
+    <link rel="stylesheet" href="./ad.css">
+</head>
+<body>
+    <div id="viewport">
+        <div id="stage">
+            <canvas id="bg" width="1920" height="1080"></canvas>
+
+            <!-- ============ XE: GÓC NGANG ============ -->
+            <svg id="car-side" class="car" viewBox="0 0 1000 700" width="1000" height="700">
+                <defs>
+                    <linearGradient id="sideBody" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#30333a"/>
+                        <stop offset="0.2" stop-color="#16181c"/>
+                        <stop offset="0.55" stop-color="#0c0d10"/>
+                        <stop offset="1" stop-color="#050506"/>
+                    </linearGradient>
+                    <linearGradient id="sideGlass" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#202838"/>
+                        <stop offset="0.45" stop-color="#0b0e14"/>
+                        <stop offset="1" stop-color="#030405"/>
+                    </linearGradient>
+                    <linearGradient id="sideRim" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0" stop-color="#ffe7b8" stop-opacity="0"/>
+                        <stop offset="0.35" stop-color="#ffe7b8" stop-opacity="0.55"/>
+                        <stop offset="0.7" stop-color="#ffffff" stop-opacity="0.8"/>
+                        <stop offset="1" stop-color="#ffe7b8" stop-opacity="0.1"/>
+                    </linearGradient>
+                    <linearGradient id="sheen1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="200" y2="0">
+                        <stop offset="0" stop-color="#ffd9a0" stop-opacity="0"/>
+                        <stop offset="0.5" stop-color="#ffe4b5" stop-opacity="0.2"/>
+                        <stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="sheen2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="200" y2="0">
+                        <stop offset="0" stop-color="#ffd9a0" stop-opacity="0"/>
+                        <stop offset="0.5" stop-color="#ffe4b5" stop-opacity="0.2"/>
+                        <stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="rimMetal" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#b9bec6"/>
+                        <stop offset="1" stop-color="#4b4f57"/>
+                    </linearGradient>
+                    <radialGradient id="rimShade">
+                        <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
+                        <stop offset="1" stop-color="#000" stop-opacity="0.75"/>
+                    </radialGradient>
+                    <radialGradient id="headGlow">
+                        <stop offset="0" stop-color="#f4f9ff" stop-opacity="0.95"/>
+                        <stop offset="0.25" stop-color="#cfe4ff" stop-opacity="0.35"/>
+                        <stop offset="1" stop-color="#9cc4ff" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="tailGlow">
+                        <stop offset="0" stop-color="#ff3b30" stop-opacity="0.9"/>
+                        <stop offset="0.3" stop-color="#ff1a1a" stop-opacity="0.35"/>
+                        <stop offset="1" stop-color="#ff0000" stop-opacity="0"/>
+                    </radialGradient>
+                    <linearGradient id="sideReflFade" gradientUnits="userSpaceOnUse" x1="0" y1="340" x2="0" y2="560">
+                        <stop offset="0" stop-color="#fff" stop-opacity="0.55"/>
+                        <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+                    </linearGradient>
+                    <mask id="sideReflMask" maskUnits="userSpaceOnUse" x="-200" y="340" width="1400" height="360">
+                        <rect x="-200" y="340" width="1400" height="360" fill="url(#sideReflFade)"/>
+                    </mask>
+                    <filter id="blur3" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3"/></filter>
+                    <filter id="blur10" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+                    <clipPath id="sideBodyClip">
+                        <path d="M 52 300 C 40 298 34 288 34 272 L 32 222 C 32 204 36 188 44 176 C 62 148 90 112 126 84 C 146 68 172 56 206 50 C 320 34 470 26 560 30 C 604 32 636 44 662 62 C 696 86 724 110 750 126 C 808 136 884 146 934 158 C 956 164 968 176 972 194 L 976 238 C 977 264 972 286 960 300 L 854.6 300 A 86 86 0 1 0 693.4 300 L 308.6 300 A 86 86 0 1 0 147.4 300 Z"/>
+                    </clipPath>
+                    <g id="wheel">
+                        <circle r="70" fill="#09090a"/>
+                        <circle r="66" fill="none" stroke="#1b1b1e" stroke-width="3"/>
+                        <path d="M -58 -38 A 70 70 0 0 1 58 -38" fill="none" stroke="#3a3c42" stroke-width="2" stroke-opacity="0.7"/>
+                        <circle r="51" fill="#17191d" stroke="#80858d" stroke-width="1.6"/>
+                        <g class="spokes">
+                            <g fill="url(#rimMetal)">
+                                <path d="M -3 -13 L -12 -48 L -3 -49 L 2 -13 Z"/>
+                                <path d="M 3 -13 L 12 -48 L 3 -49 L -2 -13 Z" transform="rotate(10)"/>
+                                <path d="M -3 -13 L -12 -48 L -3 -49 L 2 -13 Z" transform="rotate(72)"/>
+                                <path d="M 3 -13 L 12 -48 L 3 -49 L -2 -13 Z" transform="rotate(82)"/>
+                                <path d="M -3 -13 L -12 -48 L -3 -49 L 2 -13 Z" transform="rotate(144)"/>
+                                <path d="M 3 -13 L 12 -48 L 3 -49 L -2 -13 Z" transform="rotate(154)"/>
+                                <path d="M -3 -13 L -12 -48 L -3 -49 L 2 -13 Z" transform="rotate(216)"/>
+                                <path d="M 3 -13 L 12 -48 L 3 -49 L -2 -13 Z" transform="rotate(226)"/>
+                                <path d="M -3 -13 L -12 -48 L -3 -49 L 2 -13 Z" transform="rotate(288)"/>
+                                <path d="M 3 -13 L 12 -48 L 3 -49 L -2 -13 Z" transform="rotate(298)"/>
+                            </g>
+                            <circle r="13" fill="#25282d" stroke="#9aa0a8" stroke-width="1.5"/>
+                            <circle r="4" fill="#0c0d0f"/>
+                        </g>
+                        <circle r="51" fill="url(#rimShade)"/>
+                    </g>
+                </defs>
+
+                <g id="side-car">
+                    <ellipse cx="500" cy="338" rx="440" ry="14" fill="#000" opacity="0.85" filter="url(#blur10)"/>
+                    <!-- thân xe (thu ngắn / nâng gầm quanh mặt đất y=340 để ra dáng SUV) -->
+                    <g id="side-shell" transform="translate(500 340) scale(0.92 1.04) translate(-500 -340)">
+                    <path id="side-body" fill="url(#sideBody)" d="M 52 300 C 40 298 34 288 34 272 L 32 222 C 32 204 36 188 44 176 C 62 148 90 112 126 84 C 146 68 172 56 206 50 C 320 34 470 26 560 30 C 604 32 636 44 662 62 C 696 86 724 110 750 126 C 808 136 884 146 934 158 C 956 164 968 176 972 194 L 976 238 C 977 264 972 286 960 300 L 854.6 300 A 86 86 0 1 0 693.4 300 L 308.6 300 A 86 86 0 1 0 147.4 300 Z"/>
+                    <!-- kính -->
+                    <path fill="url(#sideGlass)" d="M 716 122 L 654 72 C 630 56 600 46 562 46 L 300 54 C 252 57 214 66 186 82 L 150 112 C 300 114 520 118 716 122 Z"/>
+                    <path fill="#020203" d="M 452 48 L 468 48 L 470 120 L 454 119 Z"/>
+                    <path fill="#020203" d="M 262 55 L 278 54 L 264 115 L 248 114 Z"/>
+                    <path fill="none" stroke="#d6d9de" stroke-opacity="0.4" stroke-width="2" d="M 716 122 L 654 72 C 630 56 600 46 562 46 L 300 54 C 252 57 214 66 186 82 L 150 112"/>
+                    <path fill="none" stroke="#d6d9de" stroke-opacity="0.3" stroke-width="2.5" d="M 150 113 C 300 115 520 119 716 123"/>
+                    <!-- gương -->
+                    <path fill="#121317" stroke="#3a3d44" stroke-width="1" d="M 700 118 C 702 102 720 96 736 100 C 746 104 744 120 732 124 L 704 126 Z"/>
+                    <!-- đường gân -->
+                    <path fill="none" stroke="#6b6f78" stroke-opacity="0.6" stroke-width="2" d="M 52 174 C 300 158 640 152 948 170"/>
+                    <path fill="none" stroke="#000" stroke-opacity="0.65" stroke-width="2.5" d="M 52 178 C 300 162 640 156 948 174"/>
+                    <path fill="none" stroke="#4a4d55" stroke-opacity="0.5" stroke-width="1.5" d="M 318 262 C 480 252 600 252 688 260"/>
+                    <!-- khe cửa -->
+                    <path fill="none" stroke="#000" stroke-opacity="0.85" stroke-width="2" d="M 460 122 C 458 180 456 240 456 294 M 714 128 C 706 160 700 196 698 228 M 264 118 C 282 150 296 190 300 224"/>
+                    <!-- tay nắm ẩn -->
+                    <rect x="548" y="186" width="60" height="7" rx="3.5" fill="#2a2d33" stroke="#7d828b" stroke-opacity="0.6"/>
+                    <rect x="340" y="183" width="60" height="7" rx="3.5" fill="#2a2d33" stroke="#7d828b" stroke-opacity="0.6"/>
+                    <!-- ốp gầm -->
+                    <path fill="none" stroke="#050506" stroke-width="10" d="M 854.6 300 A 86 86 0 1 0 693.4 300 M 308.6 300 A 86 86 0 1 0 147.4 300"/>
+                    <path fill="#070708" d="M 312 288 L 690 288 L 690 300 L 312 300 Z"/>
+                    <!-- vệt sáng phản chiếu đèn đường (di chuyển theo thời gian) -->
+                    <g clip-path="url(#sideBodyClip)">
+                        <rect id="sheen-a" x="-200" y="0" width="1400" height="300" fill="url(#sheen1)"/>
+                        <rect id="sheen-b" x="-200" y="0" width="1400" height="300" fill="url(#sheen2)"/>
+                    </g>
+                    <!-- viền sáng nóc -->
+                    <path id="side-rim" fill="none" stroke="url(#sideRim)" stroke-width="2.4" stroke-linecap="round" d="M 44 176 C 62 148 90 112 126 84 C 146 68 172 56 206 50 C 320 34 470 26 560 30 C 604 32 636 44 662 62 C 696 86 724 110 750 126 C 808 136 884 146 934 158 C 956 164 968 176 972 194"/>
+                    <!-- đèn pha / đèn hậu -->
+                    <g id="side-lights">
+                        <ellipse cx="955" cy="178" rx="90" ry="40" fill="url(#headGlow)" opacity="0.8"/>
+                        <path d="M 904 162 C 932 166 954 174 968 186" fill="none" stroke="#f2f8ff" stroke-width="5" stroke-linecap="round"/>
+                        <ellipse cx="44" cy="180" rx="70" ry="34" fill="url(#tailGlow)"/>
+                        <path d="M 38 188 C 48 178 62 172 84 168" fill="none" stroke="#ff3a2e" stroke-width="6" stroke-linecap="round"/>
+                    </g>
+                    </g>
+                    <use href="#wheel" transform="translate(250 268) scale(1.03)"/>
+                    <use href="#wheel" transform="translate(752 268) scale(1.03)"/>
+                </g>
+                <!-- bóng phản chiếu trên mặt đường ướt -->
+                <g mask="url(#sideReflMask)">
+                    <g transform="translate(0 680) scale(1 -1)" filter="url(#blur3)">
+                        <use href="#side-car"/>
+                    </g>
+                </g>
+            </svg>
+
+            <!-- ============ XE: GÓC TRƯỚC ============ -->
+            <svg id="car-front" class="car" viewBox="0 0 1000 1100" width="1000" height="1100">
+                <defs>
+                    <linearGradient id="frontBody" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#1a1c20"/>
+                        <stop offset="0.45" stop-color="#0d0e11"/>
+                        <stop offset="1" stop-color="#040405"/>
+                    </linearGradient>
+                    <linearGradient id="frontGlass" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#1c2331"/>
+                        <stop offset="1" stop-color="#040507"/>
+                    </linearGradient>
+                    <linearGradient id="frontRim" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#dfe9ff" stop-opacity="0.9"/>
+                        <stop offset="0.5" stop-color="#9fb4d8" stop-opacity="0.45"/>
+                        <stop offset="1" stop-color="#9fb4d8" stop-opacity="0"/>
+                    </linearGradient>
+                    <radialGradient id="ledBloom">
+                        <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+                        <stop offset="0.12" stop-color="#e3f0ff" stop-opacity="0.6"/>
+                        <stop offset="0.45" stop-color="#8fb6ff" stop-opacity="0.12"/>
+                        <stop offset="1" stop-color="#6f9dff" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="flareStreak">
+                        <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+                        <stop offset="0.2" stop-color="#bcd6ff" stop-opacity="0.55"/>
+                        <stop offset="1" stop-color="#4f7dff" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="groundSpill" cx="0.5" cy="0.5" r="0.5">
+                        <stop offset="0" stop-color="#cfe0ff" stop-opacity="0.35"/>
+                        <stop offset="1" stop-color="#cfe0ff" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="wetStreak" cx="0.5" cy="0" r="0.5" fx="0.5" fy="0">
+                        <stop offset="0" stop-color="#eef4ff" stop-opacity="0.8"/>
+                        <stop offset="0.35" stop-color="#b8cfff" stop-opacity="0.3"/>
+                        <stop offset="1" stop-color="#9fbcff" stop-opacity="0"/>
+                    </radialGradient>
+                    <filter id="fblur4" x="-30%" y="-300%" width="160%" height="700%"><feGaussianBlur stdDeviation="4"/></filter>
+                    <filter id="fblur14" x="-50%" y="-500%" width="200%" height="1100%"><feGaussianBlur stdDeviation="14"/></filter>
+                    <filter id="fblur8" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+                </defs>
+                <g id="front-car">
+                    <!-- lốp -->
+                    <rect x="148" y="640" width="112" height="100" rx="14" fill="#060607"/>
+                    <rect x="740" y="640" width="112" height="100" rx="14" fill="#060607"/>
+                    <!-- thân -->
+                    <path id="front-body" fill="url(#frontBody)" d="M 140 690 C 118 690 108 672 108 648 L 104 520 C 102 470 112 430 134 404 C 150 384 172 366 196 352 L 286 108 C 294 84 316 70 346 68 L 654 68 C 684 70 706 84 714 108 L 804 352 C 828 366 850 384 866 404 C 888 430 898 470 896 520 L 892 648 C 892 672 882 690 860 690 Z"/>
+                    <!-- gương -->
+                    <path fill="#0b0c0e" stroke="#2c2f35" d="M 196 352 L 150 330 C 130 322 104 326 98 340 C 94 352 102 362 120 364 L 190 368 Z"/>
+                    <path fill="#0b0c0e" stroke="#2c2f35" d="M 804 352 L 850 330 C 870 322 896 326 902 340 C 906 352 898 362 880 364 L 810 368 Z"/>
+                    <!-- kính lái -->
+                    <path fill="url(#frontGlass)" d="M 300 116 C 306 100 322 92 346 92 L 654 92 C 678 92 694 100 700 116 L 778 336 C 690 322 600 316 500 316 C 400 316 310 322 222 336 Z"/>
+                    <path fill="none" stroke="#8fa3c8" stroke-opacity="0.05" stroke-width="40" d="M 380 110 L 300 320"/>
+                    <!-- nắp capo -->
+                    <path fill="none" stroke="#3b3f47" stroke-opacity="0.7" stroke-width="2" d="M 228 398 C 380 378 620 378 772 398"/>
+                    <path fill="none" stroke="#2a2d33" stroke-opacity="0.8" stroke-width="2" d="M 380 340 C 400 370 410 380 420 392 M 620 340 C 600 370 590 380 580 392"/>
+                    <!-- cụm đèn -->
+                    <path fill="#060708" stroke="#202329" stroke-width="1.5" d="M 126 422 C 200 424 300 432 394 444 L 398 470 C 300 466 200 462 130 458 Z"/>
+                    <path fill="#060708" stroke="#202329" stroke-width="1.5" d="M 874 422 C 800 424 700 432 606 444 L 602 470 C 700 466 800 462 870 458 Z"/>
+                    <!-- lưới tản nhiệt dưới -->
+                    <path fill="#040405" stroke="#1d1f24" stroke-width="1.5" d="M 286 560 L 714 560 C 730 560 738 570 734 584 L 708 640 C 702 652 690 658 676 658 L 324 658 C 310 658 298 652 292 640 L 266 584 C 262 570 270 560 286 560 Z"/>
+                    <path fill="none" stroke="#17191d" stroke-width="2" d="M 278 582 L 722 582 M 286 604 L 714 604 M 296 626 L 704 626"/>
+                    <path fill="#040405" stroke="#1d1f24" d="M 150 560 L 232 560 L 216 622 L 156 622 Z M 850 560 L 768 560 L 784 622 L 844 622 Z"/>
+                    <!-- viền sáng -->
+                    <path id="front-rim" fill="none" stroke="url(#frontRim)" stroke-width="2.4" d="M 108 648 L 104 520 C 102 470 112 430 134 404 C 150 384 172 366 196 352 L 286 108 C 294 84 316 70 346 68 L 654 68 C 684 70 706 84 714 108 L 804 352 C 828 366 850 384 866 404 C 888 430 898 470 896 520 L 892 648"/>
+                </g>
+                <!-- ánh sáng -->
+                <g id="front-lights" style="mix-blend-mode:screen">
+                    <ellipse id="f-spill" cx="500" cy="760" rx="520" ry="70" fill="url(#groundSpill)"/>
+                    <rect id="f-wet-l" x="183" y="742" width="160" height="620" fill="url(#wetStreak)"/>
+                    <rect id="f-wet-r" x="657" y="742" width="160" height="620" fill="url(#wetStreak)"/>
+                    <rect id="f-wet-c" x="400" y="744" width="200" height="380" fill="url(#wetStreak)"/>
+                    <g id="f-led-glow" filter="url(#fblur14)">
+                        <path id="f-led-l-g" class="led" d="M 138 432 C 200 434 300 442 388 454" fill="none" stroke="#bcd8ff" stroke-width="26" stroke-linecap="round"/>
+                        <path id="f-led-r-g" class="led" d="M 862 432 C 800 434 700 442 612 454" fill="none" stroke="#bcd8ff" stroke-width="26" stroke-linecap="round"/>
+                        <path id="f-bar-g" class="led" d="M 500 454 L 388 454 M 500 454 L 612 454" fill="none" stroke="#bcd8ff" stroke-width="14" stroke-linecap="round"/>
+                    </g>
+                    <g id="f-led-core">
+                        <path id="f-led-l" class="led" d="M 138 432 C 200 434 300 442 388 454" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+                        <path id="f-led-r" class="led" d="M 862 432 C 800 434 700 442 612 454" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+                        <path id="f-bar" class="led" d="M 500 454 L 388 454 M 500 454 L 612 454" fill="none" stroke="#f6faff" stroke-width="3.5" stroke-linecap="round"/>
+                    </g>
+                    <circle id="f-bloom-l" cx="200" cy="438" r="260" fill="url(#ledBloom)"/>
+                    <circle id="f-bloom-r" cx="800" cy="438" r="260" fill="url(#ledBloom)"/>
+                    <ellipse id="f-flare" cx="500" cy="446" rx="1400" ry="9" fill="url(#flareStreak)"/>
+                    <ellipse id="f-flare2" cx="500" cy="446" rx="900" ry="30" fill="url(#flareStreak)" opacity="0.25"/>
+                </g>
+            </svg>
+
+            <!-- ============ XE: GÓC SAU ============ -->
+            <svg id="car-rear" class="car" viewBox="0 0 1000 1100" width="1000" height="1100">
+                <defs>
+                    <linearGradient id="rearBody" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#1c1e22"/>
+                        <stop offset="0.5" stop-color="#0c0d0f"/>
+                        <stop offset="1" stop-color="#040405"/>
+                    </linearGradient>
+                    <linearGradient id="rearRim" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#ff6a5a" stop-opacity="0.15"/>
+                        <stop offset="0.5" stop-color="#ff3b30" stop-opacity="0.6"/>
+                        <stop offset="1" stop-color="#ff3b30" stop-opacity="0"/>
+                    </linearGradient>
+                    <radialGradient id="redBloom">
+                        <stop offset="0" stop-color="#ff5a4a" stop-opacity="0.95"/>
+                        <stop offset="0.15" stop-color="#ff2418" stop-opacity="0.45"/>
+                        <stop offset="1" stop-color="#b00000" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="redWet" cx="0.5" cy="0" r="0.5" fx="0.5" fy="0">
+                        <stop offset="0" stop-color="#ff4030" stop-opacity="0.75"/>
+                        <stop offset="0.35" stop-color="#ff2010" stop-opacity="0.28"/>
+                        <stop offset="1" stop-color="#ff1a10" stop-opacity="0"/>
+                    </radialGradient>
+                    <filter id="rblur12" x="-30%" y="-600%" width="160%" height="1300%"><feGaussianBlur stdDeviation="12"/></filter>
+                    <filter id="rblur8" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+                </defs>
+                <g id="rear-car">
+                    <rect x="148" y="640" width="112" height="100" rx="14" fill="#060607"/>
+                    <rect x="740" y="640" width="112" height="100" rx="14" fill="#060607"/>
+                    <path fill="url(#rearBody)" d="M 140 690 C 118 690 108 672 108 648 L 104 500 C 102 450 114 410 140 384 C 160 366 186 352 216 344 L 296 112 C 304 88 326 74 356 72 L 644 72 C 674 74 696 88 704 112 L 784 344 C 814 352 840 366 860 384 C 886 410 898 450 896 500 L 892 648 C 892 672 882 690 860 690 Z"/>
+                    <path fill="#0d0f13" d="M 318 120 C 324 104 340 96 362 96 L 638 96 C 660 96 676 104 682 120 L 742 300 C 660 292 580 290 500 290 C 420 290 340 292 258 300 Z"/>
+                    <path fill="#050506" d="M 296 86 L 704 86 L 700 100 L 300 100 Z"/>
+                    <path fill="none" stroke="#2c2f36" stroke-width="2" d="M 236 360 C 400 346 600 346 764 360"/>
+                    <!-- cụm đèn hậu xuyên ngang -->
+                    <path fill="#0a0506" stroke="#2a1416" d="M 112 386 C 300 378 700 378 888 386 L 886 420 C 700 412 300 412 114 420 Z"/>
+                    <text x="500" y="462" text-anchor="middle" font-family="Oswald" font-weight="500" font-size="24" letter-spacing="20" fill="#8e939b">GEELY</text>
+                    <path fill="#050506" stroke="#1d1f24" d="M 410 482 L 590 482 L 586 548 L 414 548 Z"/>
+                    <path fill="#050506" d="M 120 590 L 880 590 L 876 640 C 876 660 864 672 846 672 L 154 672 C 136 672 124 660 124 640 Z"/>
+                    <path fill="#5a0b0b" d="M 150 606 L 222 606 L 222 614 L 150 614 Z M 850 606 L 778 606 L 778 614 L 850 614 Z"/>
+                    <path id="rear-rim" fill="none" stroke="url(#rearRim)" stroke-width="2.4" d="M 108 648 L 104 500 C 102 450 114 410 140 384 C 160 366 186 352 216 344 L 296 112 C 304 88 326 74 356 72 L 644 72 C 674 74 696 88 704 112 L 784 344 C 814 352 840 366 860 384 C 886 410 898 450 896 500 L 892 648"/>
+                </g>
+                <g id="rear-lights" style="mix-blend-mode:screen">
+                    <rect x="80" y="742" width="180" height="700" fill="url(#redWet)"/>
+                    <rect x="740" y="742" width="180" height="700" fill="url(#redWet)"/>
+                    <rect x="350" y="744" width="300" height="500" fill="url(#redWet)" opacity="0.6"/>
+                    <path d="M 120 399 C 300 391 700 391 880 399" fill="none" stroke="#ff2a1a" stroke-width="30" filter="url(#rblur12)"/>
+                    <path d="M 120 399 C 300 391 700 391 880 399" fill="none" stroke="#ff4a3a" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M 124 399 C 300 391 700 391 876 399" fill="none" stroke="#ffd2c8" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="160" cy="400" r="210" fill="url(#redBloom)"/>
+                    <circle cx="840" cy="400" r="210" fill="url(#redBloom)"/>
+                </g>
+            </svg>
+
+            <canvas id="fx" width="1920" height="1080"></canvas>
+
+            <!-- ============ CHỮ ============ -->
+            <div id="texts">
+                <div id="loc" class="loc"><span id="loc1"></span><br><span id="loc2"></span><i id="caret"></i></div>
+
+                <p class="line" id="l1">Thành phố này có luật của nó.</p>
+                <p class="line" id="l2">Kẻ ồn ào thì nhiều.</p>
+                <p class="line" id="l3a">Nhưng ông trùm thật sự…</p>
+                <p class="line gold" id="l3b">…không cần nổ máy.</p>
+
+                <div id="title">
+                    <div class="brand">GEELY</div>
+                    <div class="model gold-text">EX5 EM-i</div>
+                    <div class="rule"></div>
+                    <div class="sub">SUV PLUG-IN HYBRID</div>
+                </div>
+
+                <div class="dossier" id="d1">
+                    <div class="d-head"><span>HỒ SƠ MẬT · SỐ 01</span><span>TUYỆT MẬT</span></div>
+                    <div class="d-label">ĐỐI TƯỢNG: QUÃNG ĐƯỜNG THUẦN ĐIỆN</div>
+                    <div class="d-num">228,3<small>KM</small></div>
+                    <div class="d-quote">Không một giọt xăng.<br>Không một tiếng động.</div>
+                    <div class="d-foot">XÁC NHẬN: VIETKINGS · 03/2026</div>
+                    <div class="stamp">KỶ LỤC<br>VIỆT NAM</div>
+                </div>
+                <div class="dossier" id="d2">
+                    <div class="d-head"><span>HỒ SƠ MẬT · SỐ 02</span><span>TUYỆT MẬT</span></div>
+                    <div class="d-label">ĐỐI TƯỢNG: TỔNG QUÃNG ĐƯỜNG / 1 LẦN ĐỔ ĐẦY</div>
+                    <div class="d-num">1.823,7<small>KM</small></div>
+                    <div class="d-quote">Hà Nội – Cam Ranh.<br>Không cần quay đầu.</div>
+                    <div class="d-foot">XÁC NHẬN: VIETKINGS · 03/2026</div>
+                    <div class="stamp">KỶ LỤC<br>VIỆT NAM</div>
+                </div>
+                <div class="dossier" id="d3">
+                    <div class="d-head"><span>HỒ SƠ MẬT · SỐ 03</span><span>TUYỆT MẬT</span></div>
+                    <div class="d-label">ĐỐI TƯỢNG: MỨC TIÊU HAO HỖN HỢP</div>
+                    <div class="d-num">3,02<small>L/100KM</small></div>
+                    <div class="d-quote">Tiêu ít. Làm nhiều.<br>Không để lại dấu vết.</div>
+                    <div class="d-foot">XÁC NHẬN: VIETKINGS · 03/2026</div>
+                    <div class="stamp">KỶ LỤC<br>VIỆT NAM</div>
+                </div>
+
+                <p class="line" id="o1">Tôi sẽ đưa ra một lời đề nghị…</p>
+                <p class="line gold" id="o2">…mà anh không thể từ chối.</p>
+
+                <div id="price">
+                    <div class="from">CHỈ TỪ</div>
+                    <div class="amount"><span class="gold-text">789</span><small>TRIỆU</small></div>
+                    <div class="variants">PRO 789 TR &nbsp;·&nbsp; MAX 909 TR &nbsp;·&nbsp; ULTRA 969 TR</div>
+                </div>
+
+                <div id="endcard">
+                    <div class="brand">GEELY</div>
+                    <div class="model gold-text">EX5 EM-i</div>
+                    <div class="slogan">GIA ĐÌNH LÀ TRÊN HẾT.</div>
+                </div>
+                <div id="cta">ĐẶT LỊCH LÁI THỬ TẠI ĐẠI LÝ GEELY GẦN NHẤT</div>
+            </div>
+
+            <div id="flash"></div>
+            <canvas id="grain" width="1920" height="1080"></canvas>
+            <div id="vignette"></div>
+            <div class="bar" id="bar-top"></div>
+            <div class="bar" id="bar-bottom"></div>
+            <div id="disclaimer">Số liệu kỷ lục do VietKings xác lập trong hành trình thử nghiệm Hà Nội – Cam Ranh (03/2026); kết quả thực tế phụ thuộc điều kiện vận hành. Giá niêm yết tham khảo, có thể thay đổi.</div>
+        </div>
+    </div>
+
+    <!-- ============ TRÌNH PHÁT ============ -->
+    <div id="ui">
+        <div id="splash">
+            <div class="s-kicker">PHIM QUẢNG CÁO · 52 GIÂY</div>
+            <div class="s-title">GEELY <span class="gold-text">EX5 EM-i</span></div>
+            <div class="s-sub">“Ông trùm thật sự không cần nổ máy.”</div>
+            <button id="play-btn" disabled>Đang tải…</button>
+        </div>
+        <div id="controls">
+            <button id="toggle" aria-label="Phát / Tạm dừng">❚❚</button>
+            <input id="scrub" type="range" min="0" max="52" step="0.01" value="0" aria-label="Tua">
+            <span id="clock">0:00 / 0:52</span>
+            <button id="full" aria-label="Toàn màn hình">⛶</button>
+        </div>
+    </div>
+
+    <script src="./timeline.js"></script>
+    <script src="./soundtrack.js"></script>
+    <script src="./ad.js"></script>
+</body>
+</html>

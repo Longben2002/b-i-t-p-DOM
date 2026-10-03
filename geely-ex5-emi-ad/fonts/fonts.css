@@ -1,0 +1,170 @@
+/* Fonts: Playfair Display, Oswald, IBM Plex Mono — SIL Open Font License 1.1 (xem OFL.txt). Nguồn: @fontsource */
+/* playfair-display-vietnamese-400-italic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url(playfair-display-vietnamese-400-italic.woff2) format('woff2');
+}/* playfair-display-latin-ext-400-italic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url(playfair-display-latin-ext-400-italic.woff2) format('woff2');
+}/* playfair-display-latin-400-italic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url(playfair-display-latin-400-italic.woff2) format('woff2');
+}/* playfair-display-vietnamese-700-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(playfair-display-vietnamese-700-normal.woff2) format('woff2');
+}/* playfair-display-latin-ext-700-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(playfair-display-latin-ext-700-normal.woff2) format('woff2');
+}/* playfair-display-latin-700-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(playfair-display-latin-700-normal.woff2) format('woff2');
+}/* playfair-display-vietnamese-900-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src: url(playfair-display-vietnamese-900-normal.woff2) format('woff2');
+}/* playfair-display-latin-ext-900-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src: url(playfair-display-latin-ext-900-normal.woff2) format('woff2');
+}/* playfair-display-latin-900-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src: url(playfair-display-latin-900-normal.woff2) format('woff2');
+}/* oswald-vietnamese-300-normal */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: url(oswald-vietnamese-300-normal.woff2) format('woff2');
+}/* oswald-latin-ext-300-normal */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: url(oswald-latin-ext-300-normal.woff2) format('woff2');
+}/* oswald-latin-300-normal */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: url(oswald-latin-300-normal.woff2) format('woff2');
+}/* oswald-vietnamese-500-normal */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(oswald-vietnamese-500-normal.woff2) format('woff2');
+}/* oswald-latin-ext-500-normal */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(oswald-latin-ext-500-normal.woff2) format('woff2');
+}/* oswald-latin-500-normal */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(oswald-latin-500-normal.woff2) format('woff2');
+}/* oswald-vietnamese-700-normal */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(oswald-vietnamese-700-normal.woff2) format('woff2');
+}/* oswald-latin-ext-700-normal */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(oswald-latin-ext-700-normal.woff2) format('woff2');
+}/* oswald-latin-700-normal */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(oswald-latin-700-normal.woff2) format('woff2');
+}/* ibm-plex-mono-vietnamese-400-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(ibm-plex-mono-vietnamese-400-normal.woff2) format('woff2');
+}/* ibm-plex-mono-latin-ext-400-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(ibm-plex-mono-latin-ext-400-normal.woff2) format('woff2');
+}/* ibm-plex-mono-latin-400-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(ibm-plex-mono-latin-400-normal.woff2) format('woff2');
+}/* ibm-plex-mono-vietnamese-600-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(ibm-plex-mono-vietnamese-600-normal.woff2) format('woff2');
+}/* ibm-plex-mono-latin-ext-600-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(ibm-plex-mono-latin-ext-600-normal.woff2) format('woff2');
+}/* ibm-plex-mono-latin-600-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(ibm-plex-mono-latin-600-normal.woff2) format('woff2');
+}
